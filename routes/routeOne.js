@@ -1,7 +1,7 @@
-const { Router } = require("express");
-const routeOneController = require("../controllers/controllerOne");
-const routeOne = Router();
+import express from 'express';
+import * as routeOneController from "../controllers/controllerOne.js";
+const routeOne = express.Router();
 
 routeOne.get("/", routeOneController.renderIndex);
 
-module.exports = { routeOne }
+export { routeOne };

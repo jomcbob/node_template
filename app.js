@@ -1,10 +1,14 @@
-require('dotenv').config();
-const express = require("express");
+import 'dotenv/config';
+import express from 'express';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { routeOne } from "./routes/routeOne.js";
+import { routeTwo } from "./routes/routeTwo.js";
+import { routeThree } from "./routes/routeThree.js";
+
 const app = express();
-const path = require("node:path");
-const { routeOne } = require("./routes/routeOne");
-const { routeTwo } = require("./routes/routeTwo");
-const { routeThree } = require("./routes/routeThree");
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

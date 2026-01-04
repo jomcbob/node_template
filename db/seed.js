@@ -1,19 +1,15 @@
-const { Client } = require("pg");
-
-const SQL =  `
-   SELECT 1 + 1 AS "one plus one";
-`
+import 'dotenv/config';
+import prisma from './pool.js';
 
 async function main() {
-  console.log("seeding...")
-  const client = new Client({
-    connectionString: process.env.DATABASE_URL,
-  });
-  await client.connect()
-  await client.query(SQL)
-  await client.end()
-  console.log(SQL)
-  console.log('seeded!')
+  console.log('seeding...');
+  const created = await prisma.example.create({ data: { name: 'seed-example' } });
+  console.log('created:', created);
+  await prisma.$disconnect();
+  console.log('seeded!');
 }
 
-main()
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

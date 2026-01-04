@@ -1,7 +1,7 @@
-const { Router } = require("express");
-const routeTwoController = require("../controllers/controllerTwo");
-const routeTwo = Router();
+import express from 'express';
+import * as routeTwoController from "../controllers/controllerTwo.js";
+const routeTwo = express.Router();
 
 routeTwo.get("/", routeTwoController.renderIndex);
 
-module.exports = { routeTwo }
+export { routeTwo };

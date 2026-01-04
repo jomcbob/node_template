@@ -1,7 +1,7 @@
-const { Router } = require("express");
-const routeThreeController = require("../controllers/controllerThree");
-const routeThree = Router();
+import express from 'express';
+import * as routeThreeController from "../controllers/controllerThree.js";
+const routeThree = express.Router();
 
 routeThree.get("/", routeThreeController.renderIndex);
 
-module.exports = { routeThree }
+export { routeThree };
